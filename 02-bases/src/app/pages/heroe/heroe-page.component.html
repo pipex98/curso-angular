@@ -1,0 +1,21 @@
+<div class="row d-flex justify-content-center">
+  <div class="col-6">
+    <div class="card">
+      <div class="card-header">
+        <h5>{{ nameSignal() }}</h5>
+      </div>
+      <div class="card-body">
+        <p class="card-text">Nombre: <strong>{{ nameSignal() }}</strong></p>
+        <p class="card-text">Edad: <strong>{{ ageSignal() }}</strong></p>
+        <p class="card-text">Metodo: <strong>{{ heroDescription() }}</strong> </p>
+        <!-- <p class="card-text">Capitalizado: <strong>{{ capitalizeName() }}</strong></p> -->
+        <p class="card-text">Capitalizado: <strong>{{ nameSignal() | uppercase }}</strong></p>
+        <div class="btn-group gap-2">
+        <button type="button" class="btn btn-primary" (click)="changeHero()">Cambiar nombre</button>
+        <button type="button" class="btn btn-secondary" (click)="changeAge()">Cambiar edad</button>
+        <button type="button" class="btn btn-success" (click)="resetForm()">Resetear</button>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
