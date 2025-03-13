@@ -1,0 +1,28 @@
+<h3>Agregar Personaje: {{ name() }} - {{ power() }}</h3>
+<form class="mt-4">
+  <div class="mb-3">
+    <label for="txtNombre" class="form-label">Nombre:</label>
+    <input
+      type="text"
+      class="form-control"
+      id="txtNombre"
+      [value]="name()"
+      (change)="name.set( txtName.value )"
+      (input)="name.set( txtName.value )"
+      #txtName
+    >
+  </div>
+  <div class="mb-3">
+    <label for="txtPoder" class="form-label">Poder:</label>
+    <input
+      type="number"
+      class="form-control"
+      id="txtPoder"
+      [value]="power()"
+      (change)="power.set( +txtPower.value )"
+      (input)="power.set( +txtPower.value )"
+      #txtPower
+    >
+  </div>
+  <button (click)="addCharacter()" type="button" class="btn btn-primary">Agregar</button>
+</form>
