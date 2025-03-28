@@ -1,1 +1,10 @@
-<p>by-region-page works!</p>,
+<country-search-input
+  placeholder="Buscar por region"
+  (value)="query.set($event)"
+/>
+
+<country-list [countries]="countryResource.value() ?? []"
+  [errorMessage]="countryResource.error()"
+  [isEmpty]="countryResource.value()?.length === 0"
+  [isloading]="countryResource.isLoading()"
+/>

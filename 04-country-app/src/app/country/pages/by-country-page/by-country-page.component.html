@@ -1,1 +1,20 @@
-<p>by-country-page works!</p>,
+<!-- country-search-input -->
+
+<country-search-input
+  placeholder="Buscar por país"
+  (value)="query.set($event)"
+/>
+
+
+<country-list [countries]="countryResource.value() ?? []"
+  [errorMessage]="countryResource.error()"
+  [isEmpty]="countryResource.value()?.length === 0"
+  [isloading]="countryResource.isLoading()"
+/>
+
+
+<!-- country-search-input
+@if ( countryResource.error() ) {
+  <h3>{{ countryResource.error() }}</h3>
+} @if ( countryResource.hasValue() ) {
+} -->
