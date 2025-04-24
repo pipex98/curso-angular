@@ -1,9 +1,54 @@
 import { JsonPipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl } from '@angular/forms';
+import { FormUtils } from '../../../utils/form.utils';
 
 @Component({
   selector: 'app-register-page',
-  imports: [ JsonPipe ],
+  imports: [ JsonPipe, ReactiveFormsModule ],
   templateUrl: './register-page.component.html',
 })
-export class RegisterPageComponent { }
+export class RegisterPageComponent {
+
+  private FormBuilder = inject(FormBuilder);
+  FormUtils = FormUtils;
+
+  myForm: FormGroup = this.FormBuilder.group({
+    name: [
+      '',
+      [ Validators.required, Validators.pattern( FormUtils.namePattern )]
+    ],
+    email: [
+      '',
+      [ Validators.required, Validators.pattern( FormUtils.emailPattern )],
+      [ FormUtils.checkingServerResponse ]
+    ],
+    username: [
+      '',
+      [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.pattern( FormUtils.notOnlySpacesPattern ),
+        FormUtils.notStrider
+      ]
+    ],
+    password: [
+      '',
+      [ Validators.required, Validators.minLength(6)]
+    ],
+    password2: [
+      '',
+      Validators.required
+    ]
+  }, {
+    validators: [
+      FormUtils.isFieldOneEqualFieldTwo('password', 'password2')
+    ]
+  });
+
+  onSubmit() {
+    this.myForm.markAllAsTouched();
+    console.log(this.myForm.value);
+
+  }
+}
