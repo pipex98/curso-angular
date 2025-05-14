@@ -11,7 +11,7 @@ import { ProductCarouselComponent } from "../../../products/components/product-c
 })
 export class ProductPageComponent {
 
-  activatedRoute = inject(ActivatedRoute)
+  activatedRoute = inject(ActivatedRoute);
   productsService = inject(ProductsService);
 
   productIdSlug = this.activatedRoute.snapshot.params['idSlug'];
