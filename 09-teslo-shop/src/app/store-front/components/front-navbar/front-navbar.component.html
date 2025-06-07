@@ -68,6 +68,10 @@
   </div>
   <div class="navbar-end gap-4">
 
+    @if ( authService.isAdmin() ) {
+      <a routerLink="/admin" class="btn text-accent">Admin Panel</a>
+    }
+
     @if (authService.authStatus() === 'authenticated') {
       <p>
         {{ authService.user()?.fullName }}
