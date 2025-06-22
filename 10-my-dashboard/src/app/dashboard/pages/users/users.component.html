@@ -1,0 +1,41 @@
+<main>
+  <div class="px-4">
+      <div class="grid grid-cols-1 2xl:grid-cols-2 xl:gap-4 my-4">
+        <div class="bg-white shadow rounded-lg mb-4 p-4 sm:p-6 h-full">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-bold leading-none text-gray-900">Users</h3>
+            </div>
+
+            <!-- @if ( !usersService.users() ) {
+
+            } -->
+
+            <div class="flow-root">
+              <ul role="list" class="divide-y divide-gray-200">
+                @for (user of usersService.users(); track user.id) {
+                  <li class="py-3 sm:py-4 flex items-center my-2 cursor-pointer">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0">
+                          <img class="h-8 w-8 rounded-full" [srcset]="user.avatar" [alt]="user.first_name">
+                        </div>
+                        <div class="flex-1 min-w-0">
+                          <!-- <p class="text-sm font-medium text-gray-900 truncate">
+                              Neil Sims
+                          </p> -->
+                          <a [routerLink]="['/dashboard/user', user.id]" class="hover:underline">
+                              {{ user.first_name }} {{ user.last_name }}
+                          </a>
+                        </div>
+                    </div>
+                  </li>
+                } @empty {
+                  <p class="text-sm text-gray-500 truncate">
+                    Cargando, espere porfavor
+                  </p>
+                }
+              </ul>
+            </div>
+        </div>
+      </div>
+  </div>
+</main>

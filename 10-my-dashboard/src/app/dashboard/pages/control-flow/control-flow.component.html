@@ -1,0 +1,110 @@
+<main>
+  <div class="pt-6 px-4">
+
+    <!-- <h3 class="text-xl font-bold text-gray-900 mb-2">Control Flow</h3> -->
+
+    <app-title title="Control Flow" withShadow />
+
+    <div class="grid grid-cols-1 2xl:grid-cols-2 xl:gap-4 my-4">
+
+      <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
+        <div class="flow-root">
+            <h3 class="text-lg mb-4">
+              if: {{ showContent() }}
+            </h3>
+            <button (click)="toogleContent()"
+            class="hidden sm:inline-flex text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4
+            focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center mr-3 mb-4">
+              Click me!
+            </button>
+
+            @if ( showContent() ) {
+              <h3 class="text-base font-normal text-gray-500">Se cumplio la condicion</h3>
+            }
+            @else {
+              <h3 class="text-base font-normal text-gray-500">No se cumplio la condicion</h3>
+            }
+        </div>
+      </div>
+
+      <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
+          <div class="mb-4 flex justify-center">
+            <div>
+
+            <h3 class="text-xl font-bold text-gray-900 mb-2 text-center"> Grade: {{ grade() }}</h3>
+
+              @switch (grade()) {
+                @case ('A') {
+                  <h3 class="text-xl text-gray-900 mb-2">Arriba de 90</h3>
+                }
+                @case ('B') {
+                  <h3 class="text-xl text-gray-900 mb-2">Arriba de 80</h3>
+                }
+                @default {
+                  <h3 class="text-xl text-gray-900 mb-2">Reprobado</h3>
+                }
+              }
+            </div>
+          </div>
+      </div>
+
+    </div>
+
+    <div class="grid grid-cols-1 2xl:grid-cols-2 xl:gap-4 my-4">
+
+      <div class="bg-white shadow rounded-lg mb-4 p-4 sm:p-6 h-full">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-xl font-bold leading-none text-gray-900">Frameworks</h3>
+        </div>
+        <div class="flow-root">
+          <ul role="list" class="divide-y divide-gray-200">
+            @for (framework of frameworks(); track framework;
+            let i = $index, first = $first, last = $last, even = $even, odd = $odd, count = $count) {
+              <li
+                [class]="{
+                  'bg-red-100': even && !first && !last,
+                  'bg-purple-100': odd && !first && !last,
+                  'bg-blue-100': first || last
+                }"
+                class="py-3 sm:py-4"
+              >
+                <div class="flex items-center space-x-4">
+                    <div class="flex-1 min-w-0">
+                      <p class="text-sm font-medium text-gray-900 truncate">
+                        {{ i + 1 }} / {{ count }} - {{ framework }}
+                      </p>
+                    </div>
+                </div>
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-white shadow rounded-lg mb-4 p-4 sm:p-6 h-full">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-xl font-bold leading-none text-gray-900">Frameworks</h3>
+        </div>
+        <div class="flow-root">
+          <ul role="list" class="divide-y divide-gray-200">
+            @for (framework of copiaframeworks(); track framework;) {
+              <li class="py-3 sm:py-4">
+                <div class="flex items-center space-x-4">
+                    <div class="flex-1 min-w-0">
+                      <p class="text-sm font-medium text-gray-900 truncate">
+                        {{ framework }}
+                      </p>
+                    </div>
+                </div>
+              </li>
+            } @empty {
+              <h3 class="text-base font-normal text-gray-500">No hay frameworks agregados</h3>
+            }
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</main>

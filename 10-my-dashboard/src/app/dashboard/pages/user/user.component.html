@@ -1,0 +1,30 @@
+<main>
+  <div class="pt-6 px-4">
+
+      <app-title [title]="titleLabel()" />
+
+      <div class="grid grid-cols-1 2xl:grid-cols-2 xl:gap-4 my-4">
+        <div class="bg-white shadow rounded-lg mb-4 p-4 sm:p-6 h-full">
+          @if ( user() ) {
+            <div class="flex items-center space-x-4">
+              <div class="flex-shrink-0">
+                <img class="rounded-full" [srcset]="user()!.avatar" [alt]="user()!.first_name">
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-medium text-gray-900 truncate pb-3">
+                  {{ user()?.first_name }} {{ user()?.last_name }}
+                </p>
+                <p class="text-sm font-medium text-gray-900 truncate">
+                  {{ user()?.email }}
+                </p>
+              </div>
+          </div>
+          } @else {
+            <p class="text-sm text-gray-500 truncate">
+              Cargando informacion
+            </p>
+          }
+        </div>
+      </div>
+  </div>
+</main>
