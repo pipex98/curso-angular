@@ -3,6 +3,9 @@ import { DecimalPipe, JsonPipe } from '@angular/common';
 
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
+import { environment } from '../../../environments/environment';
+
+const key = environment.maplibreKey
 
 @Component({
   selector: 'app-fullscreen-map-page',
@@ -54,7 +57,7 @@ export class FullscreenMapPageComponent implements AfterContentInit {
 
     const map = new maplibregl.Map({
       container: element, // container id
-      style: 'https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL', // style URL
+      style: `https://api.maptiler.com/maps/streets/style.json?key=${key}`, // style URL
       center: [lng, lat], // starting position [lng, lat]
       zoom: this.zoom() // starting zoom
     });

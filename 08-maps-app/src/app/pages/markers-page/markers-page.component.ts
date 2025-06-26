@@ -3,6 +3,9 @@ import { v4 as UUIDV4 } from 'uuid';
 import maplibregl, { LngLatLike } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { JsonPipe } from '@angular/common';
+import { environment } from '../../../environments/environment';
+
+const key = environment.maplibreKey
 
 interface Marker {
   id:string,
@@ -27,7 +30,7 @@ export class MarkersPageComponent implements AfterContentInit {
 
     const map = new maplibregl.Map({
       container: element, // container id
-      style: 'https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL', // style URL
+      style: `https://api.maptiler.com/maps/streets/style.json?key=${key}`, // style URL
       center: [-75.56718845041755, 6.25264299575948], // starting position [lng, lat]
       zoom: 11 // starting zoom
     });

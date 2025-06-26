@@ -2,12 +2,9 @@ import { AfterContentInit, Component, ElementRef, input, signal, viewChild } fro
 
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import { HouseProperty } from '../../../../interfaces/house-property.interface';
+import { environment } from '../../../../../environments/environment';
 
-/**
- * width: 100%
- * height: 260
- */
+const key = environment.maplibreKey
 
 @Component({
   selector: 'app-mini-map',
@@ -33,7 +30,7 @@ export class MiniMapComponent implements AfterContentInit {
 
     const map = new maplibregl.Map({
       container: element, // container id
-      style: 'https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL', // style URL
+      style: `https://api.maptiler.com/maps/streets/style.json?key=${key}`, // style URL
       center: this.lngLat(), // starting position [lng, lat]
       zoom: this.zoom(), // starting zoom,
       interactive: false,
